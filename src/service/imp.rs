@@ -9,18 +9,24 @@ impl Service {
         Service {}
     }
 
-    pub fn get_number_of_laptops_by_manufacturer(&self, _filter: ManufacturerFilter) -> i32 {
+    pub fn get_number_of_laptops_by_manufacturer(&self, filter: ManufacturerFilter) -> i32 {
+        println!("Mocking request for filters: {:?}", filter);
+
         5
     }
 
     pub fn get_number_of_laptops_by_screen_proportions(
         &self,
-        _filter: ScreenProportionsFilter,
+        filter: ScreenProportionsFilter,
     ) -> i32 {
+        println!("Mocking request for filters: {:?}", filter);
+
         2
     }
 
-    pub fn get_laptops_by_selected_traits(&self, _filter: LaptopTraitsFilter) -> Vec<Laptop> {
+    pub fn get_laptops_by_selected_traits(&self, filter: LaptopTraitsFilter) -> Vec<Laptop> {
+        println!("Mocking request for filters: {:?}", filter);
+
         vec![
             Laptop {
                 manufacturer: Some("Manufacturer1".to_string()),

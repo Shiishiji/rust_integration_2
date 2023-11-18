@@ -1,3 +1,6 @@
+mod factory;
+pub(super) mod models_xml;
+
 #[derive(Debug, Default, Clone)]
 pub struct ManufacturerFilter {
     pub manufacturer: String,
@@ -24,6 +27,7 @@ impl ScreenProportionsFilter {
     }
 }
 
+#[derive(Debug)]
 pub struct LaptopTraitsFilter {
     pub manufacturer: String,
     pub screen_type: String,
@@ -38,6 +42,11 @@ impl LaptopTraitsFilter {
             screen_size: screen_size.to_string(),
         }
     }
+}
+
+#[derive(Debug, Default, Clone)]
+pub struct Laptops {
+    pub laptops: Vec<Laptop>,
 }
 
 #[derive(Debug, Default, Clone)]

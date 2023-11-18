@@ -1,13 +1,16 @@
-use crate::service::models::{LaptopTraitsFilter, ManufacturerFilter, ScreenProportionsFilter};
+use crate::service::adapter::file_adapter::FileAdapter;
+use crate::service::models::{
+    LaptopTraitsFilter, Laptops, ManufacturerFilter, ScreenProportionsFilter,
+};
 use crate::service::Service;
 use adw::glib::subclass::InitializingObject;
-use adw::prelude::Cast;
+use adw::prelude::{Cast, FileExt};
 use adw::subclass::prelude::ObjectSubclass;
 use adw::subclass::prelude::*;
-use gtk::ffi::GtkStringObject;
-use gtk::prelude::EditableExt;
+use gtk::prelude::{DialogExt, EditableExt, FileChooserExt, GtkWindowExt, WidgetExt};
 use gtk::{
-    glib, template_callbacks, Button, CompositeTemplate, DropDown, Entry, Label, StringObject,
+    glib, template_callbacks, Button, CompositeTemplate, DropDown, Entry, FileChooserAction,
+    FileChooserDialog, Label, ResponseType, StringObject,
 };
 
 #[derive(CompositeTemplate, Default)]
@@ -51,7 +54,7 @@ impl ObjectSubclass for Window {
 impl Window {
     #[template_callback]
     pub async fn handle_nr_of_laptops_by_manufacturer(&self, _: Button) {
-        println!("handle handle_nr_of_laptops_by_manufacturer");
+        println!("Handling handle_nr_of_laptops_by_manufacturer");
 
         let service = Service::new();
         let response = service.get_number_of_laptops_by_manufacturer(ManufacturerFilter::new(
@@ -64,7 +67,7 @@ impl Window {
 
     #[template_callback]
     pub async fn handle_nr_of_laptops_by_screen_proportions(&self, _: Button) {
-        println!("handle handle_nr_of_laptops_by_screen_proportions");
+        println!("Handling handle_nr_of_laptops_by_screen_proportions");
 
         let screen_proportions = self
             .drop_down_screen_proportions
@@ -86,7 +89,7 @@ impl Window {
 
     #[template_callback]
     pub async fn handle_export_laptops(&self, _: Button) {
-        println!("handle handle_export_laptops");
+        println!("Handling handle_export_laptops");
 
         let filter = LaptopTraitsFilter::new(
             self.entry_traits_manufacturer.get().text().as_str(),
@@ -95,9 +98,48 @@ impl Window {
         );
 
         let service = Service::new();
+        let response = service.get_laptops_by_selected_traits(filter).clone();
+        let laptops = Laptops { laptops: response };
 
-        let response = service.get_laptops_by_selected_traits(filter);
-        println!("{:?}", response);
+        self.get_filename_and_perform_action(FileChooserAction::Save, move |filename| {
+            let file_adapter = FileAdapter {};
+
+            file_adapter.save_to_xml(filename, laptops.clone());
+        });
+    }
+
+    fn get_filename_and_perform_action<F>(&self, action_type: FileChooserAction, action: F)
+    where
+        F: Fn(&str) + 'static,
+    {
+        let obj = &self.obj();
+
+        let file_dialog =
+            FileChooserDialog::new(Some("Wybierz plik"), Some(obj.as_ref()), action_type, &[]);
+
+        file_dialog.add_button("Cancel", ResponseType::Cancel.into());
+        file_dialog.add_button("Open", ResponseType::Accept.into());
+
+        // Connect the response signal
+        file_dialog.connect_response(move |dialog, response| {
+            match response {
+                ResponseType::Accept => {
+                    let file = dialog.file().expect("cannot get the file");
+
+                    if let Some(filename) = file.path() {
+                        let path = filename.to_str().expect("");
+                        println!("Selected path: {:?}", path);
+
+                        action(path);
+                    }
+                }
+                _ => (),
+            }
+            dialog.close();
+        });
+
+        // Show the file chooser dialog
+        file_dialog.show();
     }
 }
 

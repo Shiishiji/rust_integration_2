@@ -8,6 +8,8 @@ edition = "2021"
 [dependencies]
 adw = { version = "0.5.3", package = "libadwaita", features = ["gtk_v4_6"] }
 gtk = { version = "0.7.3", package = "gtk4", features = ["v4_6"] }
+yaserde = { version = "0.8.0", features = ["yaserde_derive"] }
+yaserde_derive = "0.8.0"
 
 [build-dependencies]
 glib-build-tools = "0.18.0"
