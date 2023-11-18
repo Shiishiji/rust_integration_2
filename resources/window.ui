@@ -67,6 +67,79 @@
                         </child>
                     </object>
                 </child>
+
+                <child>
+                    <object class="GtkFrame">
+                        <child>
+                            <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label">Liczba laptopów o danych proporcjach ekranu</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkSeparator"/>
+                                </child>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="margin-top">5</property>
+                                        <property name="orientation">horizontal</property>
+                                        <property name="spacing">5</property>
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">start</property>
+                                                        <property name="label">Proporcje:</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkDropDown" id="drop_down_screen_proportions">
+                                                        <property name="model">
+                                                            <object class="GtkStringList">
+                                                                <items>
+                                                                    <item translatable="no">16:9</item>
+                                                                    <item translatable="no">16:10</item>
+                                                                    <item translatable="no">21:9</item>
+                                                                    <item translatable="no">32:9</item>
+                                                                    <item translatable="no">1:1</item>
+                                                                    <item translatable="no">4:3</item>
+                                                                    <item translatable="no">5:4</item>
+                                                                </items>
+                                                            </object>
+                                                        </property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <object class="GtkLabel" id="label_nr_of_laptops_by_screen_proportions">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="label"> - </property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkButton" id="button_nr_of_laptops_by_screen_proportions">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="label">Odśwież</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
     </template>
