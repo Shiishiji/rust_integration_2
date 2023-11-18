@@ -1,8 +1,14 @@
-
-
 #[derive(Debug, Default, Clone)]
 pub struct ManufacturerFilter {
     pub manufacturer: String,
+}
+
+impl ManufacturerFilter {
+    pub fn new(manufacturer: &str) -> Self {
+        ManufacturerFilter {
+            manufacturer: manufacturer.to_string(),
+        }
+    }
 }
 
 #[derive(Debug, Default, Clone)]
@@ -10,10 +16,28 @@ pub struct ScreenProportionsFilter {
     pub screen_proportion: String,
 }
 
+impl ScreenProportionsFilter {
+    pub fn new(screen_proportions: &str) -> Self {
+        ScreenProportionsFilter {
+            screen_proportion: screen_proportions.to_string(),
+        }
+    }
+}
+
 pub struct LaptopTraitsFilter {
     pub manufacturer: String,
     pub screen_type: String,
+    pub screen_size: String,
+}
 
+impl LaptopTraitsFilter {
+    pub fn new(manufacturer: &str, screen_type: &str, screen_size: &str) -> Self {
+        LaptopTraitsFilter {
+            manufacturer: manufacturer.to_string(),
+            screen_type: screen_type.to_string(),
+            screen_size: screen_size.to_string(),
+        }
+    }
 }
 
 #[derive(Debug, Default, Clone)]

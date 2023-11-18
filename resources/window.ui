@@ -181,7 +181,7 @@
                                                             </object>
                                                         </child>
                                                         <child>
-                                                            <object class="GtkEntry"/>
+                                                            <object class="GtkEntry" id="entry_traits_manufacturer"/>
                                                         </child>
                                                     </object>
                                                 </child>
@@ -194,7 +194,7 @@
                                                             </object>
                                                         </child>
                                                         <child>
-                                                            <object class="GtkEntry"/>
+                                                            <object class="GtkEntry" id="entry_traits_screen_type"/>
                                                         </child>
                                                     </object>
                                                 </child>
@@ -207,7 +207,7 @@
                                                             </object>
                                                         </child>
                                                         <child>
-                                                            <object class="GtkEntry"/>
+                                                            <object class="GtkEntry" id="entry_traits_screen_size"/>
                                                         </child>
                                                     </object>
                                                 </child>

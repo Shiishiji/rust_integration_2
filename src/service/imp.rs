@@ -1,16 +1,26 @@
-use crate::service::models::{Disc, GraphicCard, Laptop, LaptopTraitsFilter, ManufacturerFilter, Processor, Screen, ScreenProportionsFilter};
+use crate::service::models::{
+    Disc, GraphicCard, Laptop, LaptopTraitsFilter, ManufacturerFilter, Processor, Screen,
+    ScreenProportionsFilter,
+};
 use crate::service::Service;
 
 impl Service {
-    pub fn get_number_of_laptops_by_manufacturer(_filter: ManufacturerFilter) -> i32 {
+    pub fn new() -> Self {
+        Service {}
+    }
+
+    pub fn get_number_of_laptops_by_manufacturer(&self, _filter: ManufacturerFilter) -> i32 {
         5
     }
 
-    pub fn get_number_of_laptops_by_screen_proportions(_filter: ScreenProportionsFilter) -> i32 {
+    pub fn get_number_of_laptops_by_screen_proportions(
+        &self,
+        _filter: ScreenProportionsFilter,
+    ) -> i32 {
         2
     }
 
-    pub fn get_laptops_by_selected_traits(_filter: LaptopTraitsFilter) -> Vec<Laptop> {
+    pub fn get_laptops_by_selected_traits(&self, _filter: LaptopTraitsFilter) -> Vec<Laptop> {
         vec![
             Laptop {
                 manufacturer: Some("Manufacturer1".to_string()),
@@ -62,7 +72,6 @@ impl Service {
                 os: Some("Ubuntu 20.04".to_string()),
                 disc_reader: Some("None".to_string()),
             },
-
             Laptop {
                 manufacturer: Some("Manufacturer3".to_string()),
                 screen: Some(Screen {
@@ -87,8 +96,7 @@ impl Service {
                 }),
                 os: Some("macOS Big Sur".to_string()),
                 disc_reader: Some("None".to_string()),
-            }
-
+            },
         ]
     }
 }
