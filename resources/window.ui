@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<interface>
+    <template class="AppWindow" parent="GtkApplicationWindow">
+        <property name="title">Integracja systemów - program kliencki - Damian Szopiński</property>
+        <property name="default-width">1000</property>
+        <property name="default-height">600</property>
+    </template>
+</interface>
