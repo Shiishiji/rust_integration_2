@@ -54,6 +54,7 @@
                                                 </child>
                                                 <child>
                                                     <object class="GtkButton" id="button_nr_of_laptops_by_manufacturer">
+                                                        <signal name="clicked" handler="handle_nr_of_laptops_by_manufacturer" swapped="true"/>
                                                         <property name="halign">center</property>
                                                         <property name="valign">center</property>
                                                         <property name="label">Odśwież</property>
@@ -127,6 +128,7 @@
                                                 </child>
                                                 <child>
                                                     <object class="GtkButton" id="button_nr_of_laptops_by_screen_proportions">
+                                                        <signal name="clicked" handler="handle_nr_of_laptops_by_screen_proportions" swapped="true" />
                                                         <property name="halign">center</property>
                                                         <property name="valign">center</property>
                                                         <property name="label">Odśwież</property>
@@ -217,6 +219,7 @@
                                                 <property name="valign">center</property>
                                                 <child>
                                                     <object class="GtkButton" id="button_export_laptops">
+                                                        <signal name="clicked" handler="handle_export_laptops" swapped="true"/>
                                                         <property name="halign">center</property>
                                                         <property name="valign">center</property>
                                                         <property name="label">Wyeksportuj</property>
