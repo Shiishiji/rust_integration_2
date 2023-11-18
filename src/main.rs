@@ -5,6 +5,7 @@ use adw::{gio, glib, Application};
 use gtk::CssProvider;
 
 mod gui;
+mod service;
 
 static APP_ID: &str = "org.shiishiji.Integration1";
 
