@@ -140,6 +140,96 @@
                         </child>
                     </object>
                 </child>
+
+                <child>
+                    <object class="GtkFrame">
+                        <child>
+                            <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label">Eksport laptopów o wybranych cechach</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkSeparator"/>
+                                </child>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="margin-top">5</property>
+                                        <property name="orientation">horizontal</property>
+                                        <property name="spacing">5</property>
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="orientation">vertical</property>
+                                                <property name="spacing">2</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">start</property>
+                                                        <property name="label">Cechy:</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <property name="homogeneous">true</property>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="label">Producent</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkEntry"/>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <property name="homogeneous">true</property>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="label">Wielkość matrycy</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkEntry"/>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <property name="homogeneous">true</property>
+                                                        <child>
+                                                            <object class="GtkLabel">
+                                                                <property name="label">Rozdzielczość</property>
+                                                            </object>
+                                                        </child>
+                                                        <child>
+                                                            <object class="GtkEntry"/>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="orientation">vertical</property>
+                                                <property name="valign">center</property>
+                                                <child>
+                                                    <object class="GtkButton" id="button_export_laptops">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="label">Wyeksportuj</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
     </template>
